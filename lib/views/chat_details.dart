@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:findme/_routing/routes.dart';
-import 'package:findme/models/message.dart';
+//import 'package:findme/models/message.dart';
 import 'package:findme/models/user.dart';
 import 'package:findme/widgets/chat_bubble.dart';
 
@@ -87,10 +87,10 @@ class ChatDetailsPage extends StatelessWidget {
 
     final messageList = ListView.builder(
       scrollDirection: Axis.vertical,
-      itemCount: messages.length,
+     // itemCount: messages.length,
       itemBuilder: (BuildContext context, int index) {
         return ChatBubble(
-          message: messages[index],
+          //message: messages[index],
         );
       },
     );

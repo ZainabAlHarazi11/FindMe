@@ -1,3 +1,4 @@
+import 'package:findme/views/register.dart';
 import 'package:flutter/material.dart';
 import 'package:findme/_routing/routes.dart';
 import 'package:findme/utils/colors.dart';
@@ -111,6 +112,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 fontWeight: FontWeight.w600,
               ),
             ),
+
             Text(
               ' Create new account',
               style: TextStyle(

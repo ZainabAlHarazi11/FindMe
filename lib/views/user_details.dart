@@ -9,6 +9,7 @@ import 'package:line_icons/line_icons.dart';
 class UserDetailsPage extends StatelessWidget {
   final int userId;
 
+
   const UserDetailsPage({Key key, this.userId}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class UserDetailsPage extends StatelessWidget {
       appBar: buildAppBar(context),
 
     );
+
     // final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
 
@@ -215,6 +217,8 @@ class UserDetailsPage extends StatelessWidget {
       ),
     );
   }
+
+
 
   Widget _buildHobbiesCards(String name) {
     return Container(

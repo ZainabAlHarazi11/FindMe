@@ -7,8 +7,13 @@ class User {
   String location = 'Seattle, USA.';
   String gender;
   int age;
+  String uid;
+
+
+
 
   User(this.id, this.name, this.photo, this.gender, this.age);
+ // User({ this.uid });
 }
 
 

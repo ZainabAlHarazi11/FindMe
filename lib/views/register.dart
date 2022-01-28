@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:findme/_routing/routes.dart';
+import 'package:flutter/material.dart';
 import 'package:findme/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:findme/Services/auth.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -11,6 +12,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   int _genderRadioBtnVal = -1;
+
+  final AuthService _auth = AuthService();
 
   void _handleGenderChange(int value) {
     setState(() {
@@ -57,6 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
         key: _formKey,
         child: Column(
           children: <Widget>[
+
             _buildFormField('Name', LineIcons.user),
             formFieldSpacing,
             _buildFormField('Email Address', LineIcons.envelope),
@@ -86,15 +90,31 @@ class _RegisterPageState extends State<RegisterPage> {
             onChanged: _handleGenderChange,
           ),
           Text("Female"),
+         ],
+      ),
+    );
+
+    final purpose = Padding(
+      padding: EdgeInsets.only(top: 0.0),
+      child: Row(
+        children: <Widget>[
           Radio(
-            value: 2,
+            value: 0,
             groupValue: _genderRadioBtnVal,
             onChanged: _handleGenderChange,
           ),
-          Text("Other"),
+          Text("person"),
+          Radio(
+            value: 1,
+            groupValue: _genderRadioBtnVal,
+            onChanged: _handleGenderChange,
+          ),
+          Text("Authority"),
         ],
       ),
     );
+
+
 
     final submitBtn = Padding(
       padding: EdgeInsets.only(top: 20.0),
@@ -114,13 +134,14 @@ class _RegisterPageState extends State<RegisterPage> {
           child: MaterialButton(
             onPressed: () => Navigator.of(context).pushNamed(homeViewRoute),
             child: Text(
-              'CREATE ACCOUNT',
+              'SIGN UP',
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 20.0,
                 color: Colors.white,
               ),
             ),
+            //onPressed: () async{}
           ),
         ),
       ),
@@ -141,6 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     pageTitle,
                     registerForm,
                     gender,
+                    purpose,
                     submitBtn
                   ],
                 ),
@@ -171,6 +193,10 @@ class _RegisterPageState extends State<RegisterPage> {
       keyboardType: TextInputType.text,
       style: TextStyle(color: Colors.black),
       cursorColor: Colors.black,
+        onChanged:(val) {
+          setState(() => label = val);
+          print(label);
+        }
     );
   }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:findme/models/feed.dart';
-import 'package:findme/widgets/feed_card1.dart';
-import 'package:findme/widgets/feed_card2.dart';
-import 'package:findme/widgets/feed_card3.dart';
+//import 'package:findme/models/feed.dart';
+//import 'package:findme/widgets/feed_card1.dart';
+//import 'package:findme/widgets/feed_card2.dart';
+//import 'package:findme/widgets/feed_card3.dart';
 
 class FeedsPage extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class FeedsPage extends StatelessWidget {
     final pageTitle = Padding(
       padding: EdgeInsets.only(top: 1.0, bottom: 30.0),
       child: Text(
-        "Feed",
+        "",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.black,
@@ -35,19 +35,21 @@ class FeedsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     pageTitle,
-                    FeedCard1(feed: feeds[0]),
+                   // FeedCard1(feed: feeds[0]),
                     SizedBox(
                       height: 10.0,
                     ),
-                    FeedCard2(
-                      feed: feeds[1],
-                    ),
+
+                   // FeedCard2(
+                    //  feed: feeds[1],
+                   // ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    FeedCard3(
-                      feed: feeds[2],
-                    ),
+
+                   // FeedCard3(
+                      //feed: feeds[2],
+                    //),
                   ],
                 ),
               )

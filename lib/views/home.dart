@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         BottomNavigationBarItem(
           icon: Icon(Icons.rss_feed),
           title: Text(
-            'Feed',
+            'Home',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),

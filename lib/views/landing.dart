@@ -11,7 +11,6 @@ class LandingPage extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: primaryColor),
     );
-
     final logo = Container(
       height: 100.0,
       width: 100.0,

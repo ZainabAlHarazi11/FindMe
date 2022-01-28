@@ -11,6 +11,7 @@ class AvailableFonts {
 
 class AvailableImages {
 
+
   static const man1 = {
     'assetImage' : AssetImage('assets/images/man1.jpg'),
     'assetPath' : 'assets/images/man1.jpg',
@@ -57,10 +58,14 @@ class AvailableImages {
     'assetPath' : 'assets/images/woman4.jpg',
   };
 
+
   static const woman5 = {
     'assetImage' : AssetImage('assets/images/woman5.jpg'),
     'assetPath' : 'assets/images/woman5.jpg',
   };
+
+
+
 
   static const postBanner = {
     'assetImage' : AssetImage('assets/images/post_banner.jpg'),
@@ -71,6 +76,7 @@ class AvailableImages {
     'assetImage' : AssetImage('assets/images/empty.png'),
     'assetPath' : 'assets/images/empty.png',
   };
+
 
   static const homePage = const AssetImage('assets/images/home_page.png');  
   static const appLogo = const AssetImage('assets/images/findmelogo.jpg');

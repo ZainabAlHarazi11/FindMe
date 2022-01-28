@@ -3,6 +3,7 @@ import 'package:findme/_routing/routes.dart';
 import 'package:findme/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter/services.dart';
+import 'package:findme/Services/auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   bool isRememberMe = false;
   bool obscureText = true;
   final _formKey = GlobalKey<FormState>();
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
           ]),
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, homeViewRoute),
+        //onPressed: () => Navigator.pushNamed(context, homeViewRoute),
         color: Colors.white,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(10.0),
@@ -143,6 +145,8 @@ class _LoginPageState extends State<LoginPage> {
             fontSize: 20.0,
           ),
         ),
+          onPressed: () async {}
+
       ),
     );
 
