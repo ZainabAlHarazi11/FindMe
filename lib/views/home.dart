@@ -1,3 +1,4 @@
+import 'package:findme/main.dart';
 import 'package:flutter/material.dart';
 import 'package:findme/utils/colors.dart';
 import 'package:findme/views/tabs/chats.dart';
@@ -9,6 +10,7 @@ import 'package:line_icons/line_icons.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
+
 }
 
 class _HomePageState extends State<HomePage> {
@@ -28,6 +30,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
 
     final bottomNavBar = BottomNavigationBar(
       onTap: onTabTapped,

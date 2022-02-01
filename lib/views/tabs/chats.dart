@@ -48,7 +48,7 @@ class ChatsPage extends StatelessWidget {
     );
 
     final onlineUsersHeading = Text(
-      "ONLINE USERS",
+      "Online Authorities",
       style: TextStyle(
         color: Colors.grey.withOpacity(0.6),
         fontWeight: FontWeight.w600,

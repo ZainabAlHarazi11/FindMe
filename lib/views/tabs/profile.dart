@@ -1,11 +1,16 @@
-import 'package:flutter/cupertino.dart';
+
+import 'package:findme/_routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:findme/models/user.dart';
 import 'package:findme/utils/colors.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:findme/views/tabs/profile2.dart';
 
 class ProfilePage extends StatelessWidget {
   final User user = users[0];
+  final Profile2 _profile2 = Profile2();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +22,9 @@ class ProfilePage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          _buildUserStats('VISITORS', '2305'),
-          _buildUserStats('LIKED', '276'),
-          _buildUserStats('MATCHED', '51'),
+          _buildUserStats('Active cases', ''),
+          _buildUserStats('Solved cases', ''),
+          _buildUserStats('Number of registered kids', ''),
         ],
       ),
     );
@@ -109,11 +114,12 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTile(Icons.favorite, Colors.red, 'Likes'),
+
+              _buildIconTile(Icons.favorite, Colors.red, 'Likes',0),
               hr,
-              _buildIconTile(LineIcons.eye, Colors.green, 'Visitors'),
+              _buildIconTile(LineIcons.eye, Colors.green, 'Visitors',1),
               hr,
-              _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Groups'),
+            //  _buildIconTile(LineIcons.users, Colors.purpleAccent, 'Groups'),
             ],
           ),
         ),
@@ -134,18 +140,21 @@ class ProfilePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              _buildIconTile(LineIcons.money, Colors.red, 'My Wallet'),
+             // _buildIconTile(LineIcons.money, Colors.red, 'My Wallet'),
+             // hr,
+             // _buildIconTile(LineIcons.diamond, Colors.blue, 'VIP Center'),
+           //   hr,
+              _buildIconTile(LineIcons.user_plus, Colors.orangeAccent, 'Find Friends',2),
               hr,
-              _buildIconTile(LineIcons.diamond, Colors.blue, 'VIP Center'),
+              _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist',3),
               hr,
-              _buildIconTile(LineIcons.user_plus, Colors.orangeAccent, 'Find Friends'),
-              hr,
-              _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist'),
-              hr,
-              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Settings'),
+              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Settings',4),
+
             ],
+
           ),
         ),
+
       ),
     );
 
@@ -168,7 +177,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                       Positioned(top: 100, right: 0, left: 0, child: userInfo)
                     ],
-                  ),
+                   ),
                   secondCard, thirdCard
                 ],
               ),
@@ -202,24 +211,32 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildIconTile(IconData icon, Color color, String title) {
+
+
+
+  Widget _buildIconTile(IconData icon, Color color, String title, int index) {
     return ListTile(
-      title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
-      leading: Container(
-        height: 30.0,
-        width: 30.0,
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Center(
-          child: Icon(
-            icon,
-            color: Colors.white,
+        title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
+        leading: Container(
+          height: 30.0,
+          width: 30.0,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+
+          child: Center(
+            child: Icon(
+              icon, color: Colors.white,
+
+            ),
           ),
         ),
-      ),
-      trailing: Icon(LineIcons.chevron_circle_right),
+        trailing: Icon(LineIcons.chevron_circle_right),
+        onTap: () {
+          //Navigator.pushNamed(context, 'settingsViewRoute');
+        }
     );
   }
-}
+  }
+

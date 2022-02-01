@@ -7,8 +7,25 @@ import 'package:findme/Services/auth.dart';
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
+
+
 }
 
+abstract class _RegisterPageState2 extends State<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
+  int _purposeRadioBtnVal = -1;
+
+  final AuthService _auth = AuthService();
+
+  void _handlePurposeChange(int value) {
+    setState(() {
+      _purposeRadioBtnVal = value;
+    });
+  }
+
+}
+
+//for gender selection.
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   int _genderRadioBtnVal = -1;
@@ -20,6 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
       _genderRadioBtnVal = value;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -114,8 +132,6 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
 
-
-
     final submitBtn = Padding(
       padding: EdgeInsets.only(top: 20.0),
       child: Container(
@@ -198,6 +214,8 @@ class _RegisterPageState extends State<RegisterPage> {
           print(label);
         }
     );
+
+
   }
 
 }

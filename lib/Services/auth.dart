@@ -1,4 +1,4 @@
-import 'package:findme/models/userAuth.dart' as a;
+//import 'package:findme/models/userAuth.dart' as a;
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {

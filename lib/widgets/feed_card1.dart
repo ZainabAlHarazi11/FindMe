@@ -74,7 +74,7 @@ class FeedCard1 extends StatelessWidget {
         Icon(Icons.share),
         Row(
           children: <Widget>[
-            Text('256'),
+            Text(''),
             SizedBox(
               width: 3.0,
             ),
@@ -82,7 +82,7 @@ class FeedCard1 extends StatelessWidget {
             SizedBox(
               width: 30.0,
             ),
-            Text('4k'),
+            Text(''),
             SizedBox(
               width: 3.0,
             ),
