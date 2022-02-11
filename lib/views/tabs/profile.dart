@@ -148,7 +148,7 @@ class ProfilePage extends StatelessWidget {
               hr,
               _buildIconTile(LineIcons.user_times, Colors.black, 'Blacklist',3),
               hr,
-              _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Settings',4),
+             // _buildIconTile(LineIcons.cogs, Colors.grey.withOpacity(0.6), 'Settings',4),
 
             ],
 
@@ -178,7 +178,28 @@ class ProfilePage extends StatelessWidget {
                       Positioned(top: 100, right: 0, left: 0, child: userInfo)
                     ],
                    ),
-                  secondCard, thirdCard
+                  secondCard, thirdCard,
+
+                  ListTile(
+                  title: Text('Settings', style: TextStyle(fontWeight: FontWeight.bold),),
+                       leading: Container(
+                            height: 30.0,
+                           width: 30.0,
+                           decoration: BoxDecoration(
+                           color: Colors.grey,
+                           borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            child: Center(
+                           child: Icon(LineIcons.cogs, color: Colors.white,
+
+                         ),
+                       ),
+                     ),
+                     trailing: Icon(LineIcons.chevron_circle_right),
+                      onTap: () {
+                      Navigator.pushNamed(context, settingsViewRoute);
+                    }
+                  ),
                 ],
               ),
             ),
@@ -224,7 +245,6 @@ class ProfilePage extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(10.0),
           ),
-
           child: Center(
             child: Icon(
               icon, color: Colors.white,

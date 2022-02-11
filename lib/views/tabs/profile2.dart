@@ -1,3 +1,4 @@
+//for accessing the settings widget
 
 import 'package:findme/_routing/routes.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,14 @@
+import 'package:findme/Services/auth.dart';
+import 'package:findme/_routing/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 
 
 class settingPage extends StatelessWidget{
+
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
 
@@ -16,7 +22,9 @@ class settingPage extends StatelessWidget{
           backgroundColor: Colors.white,
           title: Text("Settings",style: TextStyle(color: Colors.black),),
       ),
-      body: SingleChildScrollView(
+      body: Stack(
+       children: <Widget>[
+      SingleChildScrollView(
        // padding: const EdgeInsets.all(16.0),
         child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +36,10 @@ class settingPage extends StatelessWidget{
               color: Colors.purple,
               child: ListTile(
                 onTap: (){},
-                title: Text("User Name", style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,),)
+                title: Text("User Name", style: TextStyle(
+                  color: Colors.white,fontWeight: FontWeight.w500
+                  ,)
+                  ,)
 
     )
     ),
@@ -46,47 +57,55 @@ class settingPage extends StatelessWidget{
                    title: Text("Change Password") ,
                    trailing: Icon(Icons.keyboard_arrow_right),
                    onTap: (){
-
                     },
               ),
-
                  ListTile(
                    leading: Icon(Icons.language,color: Colors.purple,),
                    title: Text("Change Language") ,
                    trailing: Icon(Icons.keyboard_arrow_right),
                    onTap: (){
-
                  },
               ),
 
                   ListTile(
-                    leading: Icon(Icons.dark_mode,color: Colors.purple,),
-                    title: Text("Change Mode") ,
+                    leading: Icon(LineIcons.location_arrow,color: Colors.purple,),
+                    title: Text("Change Location") ,
                     trailing: Icon(Icons.keyboard_arrow_right),
                     onTap: (){
                       },
                   ),
+
+                 ListTile(
+                   leading: Icon(LineIcons.user,color: Colors.purple),
+                   title: Text("Logout") ,
+                   trailing: Icon(LineIcons.user),
+                   //onTap: () async {
+                    //await _auth.signOut();
+                    onTap: () => Navigator.pushNamed(context, landingViewRoute)
+
+                 ),
                ],
              ),
            ),
 
            const SizedBox(height: 20.0),
-           Text("Appearance",style: TextStyle(
+           Text("  Appearance",style: TextStyle(
              fontSize: 20.0,
              fontWeight: FontWeight.bold,
-             color: Colors.indigo,
+             color: Colors.purple,
            ),),
            SwitchListTile(
              activeColor: Colors.purple,
              contentPadding: const EdgeInsets.all(0),
-             value: true,
-             title: Text("Dark Mode"),
+             value: false,
+             title: Text("    Dark Mode"),
              onChanged: (val){},
            )
 
         ],
         ),
-
+    ),
+    ],
     ),
     );
 

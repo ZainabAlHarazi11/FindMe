@@ -9,4 +9,4 @@ const String homeViewRoute = 'home';
 const String chatDetailsViewRoute = 'chat_details';
 const String userDetailsViewRoute = 'user_details';
 
-const String settingsViewRoute = 'settings';
+const String settingsViewRoute = 'userSettings';

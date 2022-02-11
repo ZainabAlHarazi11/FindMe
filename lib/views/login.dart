@@ -8,6 +8,9 @@ import 'package:flutter/services.dart';
 import 'package:findme/Services/auth.dart';
 
 class LoginPage extends StatefulWidget {
+  final Function toggleView;
+  LoginPage({ this.toggleView });
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -15,8 +18,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool isRememberMe = false;
   bool obscureText = true;
+
+  String Error ='';
   final _formKey = GlobalKey<FormState>();
   final AuthService _auth = AuthService();
+
+  String userEmail = '';
+  String userPass = '';
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +54,17 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
 
+    final  appBar2 = AppBar(
+
+      actions: <Widget>[
+        FlatButton.icon(
+          icon: Icon(Icons.person),
+          label: Text('Register'),
+          onPressed: () => widget.toggleView(),
+        ),
+      ],
+    );
+
     final emailField = TextFormField(
       decoration: InputDecoration(
         labelText: 'Email Address',
@@ -53,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
         prefixIcon: Icon(
           LineIcons.envelope,
           color: Colors.white,
+
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
@@ -64,6 +84,10 @@ class _LoginPageState extends State<LoginPage> {
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(color: Colors.white),
       cursorColor: Colors.white,
+      validator: (val) => val.isEmpty ? 'Enter your email' : null,
+      onChanged: (val){
+        setState(() => userEmail = val);
+      },
     );
 
     final passwordField = TextFormField(
@@ -92,6 +116,13 @@ class _LoginPageState extends State<LoginPage> {
       style: TextStyle(color: Colors.white),
       cursorColor: Colors.white,
       obscureText: obscureText,
+      validator: (val) =>
+      val.isEmpty
+          ? 'Enter Your password'
+          : null,
+      onChanged: (val){
+        setState(() => userPass = val);
+      },
     );
 
     final loginForm = Padding(
@@ -135,25 +166,35 @@ class _LoginPageState extends State<LoginPage> {
           ]),
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => Navigator.pushNamed(context, homeViewRoute),
         color: Colors.white,
+        //onPressed: ()=> Navigator.pushNamed(context, homeViewRoute),
+
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(10.0),
         ),
 
         child: MaterialButton(
-          //onPressed: () => Navigator.of(context).pushNamed(homeViewRoute),
           child: Text(
-            'SIGN IN',
+            'LOG IN',
             style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 20.0,
           ),
         ),
-         // onPressed: () async {}
-        ),
+            onPressed: () async {
+              if(_formKey.currentState.validate()){
+                dynamic result = await _auth.signInWithEmailAndPassword(userEmail, userPass);
+                if(result == null) {
+                  setState(() {
+                    Error = 'Could not sign in with those credentials';
+                  });
+                }
+              }
+            }
+  ),
       ),
     );
+
 
     Widget remember() {
       return Container(
@@ -224,11 +265,18 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+
               pageTitle,
+             // appBar2,
               loginForm,
               forgotPassword,
               remember(),
               loginBtn,
+              SizedBox(height: 12.0),
+              Text(
+                  Error,
+                  style: TextStyle(color: Colors.red, fontSize: 14.0)
+              ),
               newUser,
             ],
           ),

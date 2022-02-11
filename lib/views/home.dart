@@ -1,3 +1,4 @@
+import 'package:findme/Services/auth.dart';
 import 'package:findme/main.dart';
 import 'package:flutter/material.dart';
 import 'package:findme/utils/colors.dart';
@@ -8,6 +9,8 @@ import 'package:findme/views/tabs/profile.dart';
 import 'package:line_icons/line_icons.dart';
 
 class HomePage extends StatefulWidget {
+  final AuthService _auth = AuthService();
+
   @override
   _HomePageState createState() => _HomePageState();
 
@@ -38,6 +41,7 @@ class _HomePageState extends State<HomePage> {
       selectedItemColor: primaryColor,
       unselectedItemColor: Colors.grey.withOpacity(0.6),
       elevation: 0.0,
+
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.rss_feed),
@@ -60,6 +64,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
+
         BottomNavigationBarItem(
           icon: Icon(LineIcons.user),
           title: Text(
@@ -70,9 +75,46 @@ class _HomePageState extends State<HomePage> {
       ],
     );
 
+
     return Scaffold(
+
       bottomNavigationBar: bottomNavBar,
-      body: _pages[_currentIndex],
+      body: Stack(
+      children: <Widget>[
+        _pages[_currentIndex],
+
+        // alert button
+        Positioned(
+          top:-10,
+          right:-20,
+          child: Container(
+              width: 100,
+              height: 100,
+              alignment:Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.purple,
+                shape: BoxShape.circle,
+              ),
+            //  child: Icon(Icons.add_alert),
+        )
+    ),
+
+        Positioned(
+         top: 25,
+         right:10,
+
+         child: IconButton(
+           icon: Icon(Icons.add_alert, size: 30.0),
+            onPressed: (){
+
+
+            },
+
+
+           ),
+         )
+       ],
+      ),
     );
   }
 }

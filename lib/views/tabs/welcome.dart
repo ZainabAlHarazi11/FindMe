@@ -25,7 +25,7 @@ class WelcomePage extends StatelessWidget{
                 image: DecorationImage(
                   image: AvailableImages.welcomeLogo,alignment: (Alignment.bottomRight
                   ),
-                   // fit: BoxFit.cover,
+                   fit: BoxFit.fitHeight
                 ),
               ),
             ),
